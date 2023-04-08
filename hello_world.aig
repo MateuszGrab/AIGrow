@@ -1,0 +1,8 @@
+// Importujemy funkcję "print" z modułu "io"
+import io.print
+
+// Definiujemy główną funkcję programu
+pure main() -> unit {
+  // Wywołujemy funkcję "print" z argumentem "hello world"
+  print("hello world")
+}

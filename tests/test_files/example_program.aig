@@ -1,0 +1,14 @@
+pf calculate_sum(x: Number, y: Number) => Number {
+    return x + y;
+}
+
+// Single line comment
+
+pf main() => {
+    let a: Number = 5;
+    let b: Number = 10;
+
+    let result: Number = calculate_sum(a, b);
+
+    println!("Suma liczb {} i {} wynosi {}", a, b, result);
+}
