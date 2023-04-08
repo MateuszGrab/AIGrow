@@ -1,5 +1,30 @@
 # AIGrow Language Specification
 
+This document describes the syntax and features of the AIGrow programming language, including examples of code snippets for each section.
+
+## Table of Contents
+
+- [Comments](#comments)
+- [Data Types](#data-types)
+- [Variables and Constants](#variables-and-constants)
+- [Operators](#operators)
+- [Control Structures](#control-structures)
+- [Functions](#functions)
+- [Modules and Imports](#modules-and-imports)
+- [Custom Data Types](#custom-data-types)
+- [Concurrency](#concurrency)
+- [Type System and Constraints](#type-system-and-constraints)
+- [Idempotent Operations](#idempotent-operations)
+- [Nested Functions](#nested-functions)
+- [Recursion](#recursion)
+- [Lazy Evaluation](#lazy-evaluation)
+- [Standard Library](#standard-library)
+- [Iterators and Generators](#iterators-and-generators)
+- [Invariants](#invariants)
+- [Macros](#macros)
+- [Attributes](#attributes)
+- [Object-Oriented Programming (Optional)](#object-oriented-programming-optional)
+
 ## Comments
 - Single-line comments: `// This is a single-line comment`
 - Multi-line comments: `/* This is a multi-line comment */`
