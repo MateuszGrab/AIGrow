@@ -9,6 +9,7 @@ edition = "2021"
 logos = "0.12.1"
 num-bigint = "0.4"
 num-traits = "0.2"
+yaml-rust = "0.4.5"
 
 
 [lib]

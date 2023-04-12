@@ -1,5 +1,6 @@
 use crate::compiler::lexer::{Token};
 use crate::compiler::lexer::NumberLiteral;
+use yaml_rust::{YamlEmitter, Yaml, YamlLoader};
 
 #[derive(Debug)]
 pub enum ParseError {
@@ -157,12 +158,11 @@ impl<'a> Parser<'a> {
         let mut parameters = Vec::new();
         while let Ok(param) = self.parse_parameter() {
             parameters.push(param);
-            // If there's a ',' token, consume it and continue parsing the next parameter
-            if
-                match self.peek() {
-                Token::Comma => matches!(self.peek().token_type, Token::Comma) ,
-                _ => panic!(),
-                } 
+            // If there's a ',' token, consume it and continue parsing the next if match self.peek() { Token::Comma => matches!(self.peek().token_type, Token::Comma) , _ => panic!(), } 
+
+            if matches!(self.peek(), Token::Comma) {
+if match self.peek() { Token::Comma => matches!(self.peek().token_type, Token::Comma) , _ => panic!(), } 
+
             {
                 self.advance();
             }
@@ -185,7 +185,7 @@ impl<'a> Parser<'a> {
     
         // Parsing the function body
         let mut body = Vec::new();
-        while self.peek().token_type != Token::CloseBrace && !self.is_at_end() {
+        while *self.peek() != Token::OpenBrace && !self.is_at_end() {
             body.push(self.parse_statement()?);
         }
     
@@ -315,9 +315,9 @@ impl<'a> Parser<'a> {
     fn parse_type(&mut self) -> Result<Type, String> {
         if self.match_token(&[Token::NumberType]) {
             Ok(Type::Int)
-        } else if self.match_token(&[Token::NumberLiteral(NumberLiteral::Float(_))]) {
+        } else if self.match_token(&[Token::NumberLiteral(NumberLiteral::Float(f))]) {
             Ok(Type::Float)
-        } else if self.match_token(&[Token::BoolType]) {
+        } else if self.match_token(&[Token::Bool]) {
             Ok(Type::Bool)
         } else if self.match_token(&[Token::StringLiteral]) {
             Ok(Type::String)
@@ -344,7 +344,41 @@ impl<'a> Parser<'a> {
     
         Ok(statements)
     }
-}
+
 
 // Definicja struktur danych dla obsługi błędów i priorytetów operatorów
 
+    }
+}
+
+
+
+fn parse_tokens_to_yaml(tokens: &[Token]) -> Yaml {
+    let mut yaml_map = Yaml::Hash(std::collections::BTreeMap::new());
+
+    for token in tokens {
+        let key = match token {
+            Token::Variant => "variant",
+            Token::TokenType => "token_type",
+            Token::End => "end",
+            // Dodaj pozostałe warianty tutaj...
+            _ => continue,
+        };
+
+        let entry = yaml_map.as_hash_mut().unwrap().entry(Yaml::String(key.to_string()));
+        let value = entry.or_insert(Yaml::Array(Vec::new()));
+        value.as_vec_mut().unwrap().push(Yaml::String(token.to_string()));
+    }
+
+    yaml_map
+}
+
+fn tokens_to_yaml_string(tokens: &[Token]) -> String {
+    let yaml_data = parse_tokens_to_yaml(tokens);
+    let mut yaml_string = String::new();
+    {
+        let mut emitter = YamlEmitter::new(&mut yaml_string);
+        emitter.dump(&yaml_data).unwrap();
+    }
+    yaml_string
+}

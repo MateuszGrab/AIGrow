@@ -1,12 +1,24 @@
 use logos::Logos;
 use num_bigint::BigInt;
+use crate::compiler::parser::Literal;
 
 #[derive(Debug, PartialEq)]
 pub enum NumberLiteral {
     Int(i64),
     Float(f64),
     BigInt(BigInt),
+    Boolean(bool), // new variant   
 }
+
+fn parse_boolean_literal(lex: &mut logos::Lexer<Token>) -> NumberLiteral {
+    let slice = lex.slice();
+    match slice {
+        "true" => NumberLiteral::Boolean(true),
+        "false" => NumberLiteral::Boolean(false),
+        _ => panic!("Failed to parse boolean literal"),
+    }
+}
+
 
 fn parse_identifier(lex: &mut logos::Lexer<Token>) -> String {
     lex.slice().to_string()
@@ -52,12 +64,6 @@ pub enum Token {
 
     #[token("while")]
     While,
-
-    #[token("true")]
-    True,
-
-    #[token("false")]
-    False,
 
     #[token("return")]
     Return,
@@ -109,6 +115,9 @@ pub enum Token {
 
     #[regex(r"(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?", callback = parse_number_literal)]
     NumberLiteral(NumberLiteral),
+
+    #[regex("(true|false)", callback = parse_boolean_literal)]
+    BooleanLiteral(NumberLiteral),    
 
     #[token("pf")]
     PureFunctionKeyword,

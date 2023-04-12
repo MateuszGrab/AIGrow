@@ -1,5 +1,8 @@
 > This repository contains code for AIGrow, written mostly by GPT4 as a language for more native AI language.
 
+IT IS WIP, 
+Builds are failing, but we (Me and GPT4) are working on it
+
 # Language name: AIGrow
 
 AIGrow is a programming language specifically designed for the growth and development of AI models. It focuses on optimizing various aspects of traditional programming languages to better cater to the complexities and unique requirements of AI model creation and optimization.
@@ -12,27 +15,8 @@ AIGrow is a programming language specifically designed for the growth and develo
 - [Example of implementation approach](#example-of-implementation-approach)
 - [Folder and files structure for Compiler](#folder-and-files-structure-for-compiler)
 - [AIGrow Language Specification](#aigrow-language-specification)
-  - [Comments](#comments)
-  - [Data Types](#data-types)
-  - [Variables and Constants](#variables-and-constants)
-  - [Operators](#operators)
-  - [Control Structures](#control-structures)
-  - [Functions](#functions)
-  - [Modules and Imports](#modules-and-imports)
-  - [Custom Data Types](#custom-data-types)
-  - [Concurrency](#concurrency)
-  - [Type System and Constraints](#type-system-and-constraints)
-  - [Idempotent Operations](#idempotent-operations)
-  - [Nested Functions](#nested-functions)
-  - [Recursion](#recursion)
-  - [Lazy Evaluation](#lazy-evaluation)
-  - [Standard Library](#standard-library)
-  - [Iterators and Generators](#iterators-and-generators)
-  - [Invariants](#invariants)
-  - [Macros](#macros)
-  - [Attributes](#attributes)
-  - [Object-Oriented Programming (Optional)](#object-oriented-programming-optional)
 
+## Introduction:
 
 ## Problem solved: 
 AIGrow addresses the challenges of working with complex logic and intricate data structures in AI model creation. By incorporating features like:  
@@ -44,20 +28,13 @@ it simplifies the process of building and maintaining AI models while reducing t
 
 ## Benefits over existing programming languages:
 
-| Language Feature                                  | Description                                                                                                            |
-|---------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-| Enhanced readability and maintainability          | AIGrow encourages the use of pure functions, nested functions, and layered composition, which promote code organization |
-|                                                   | and ease of understanding. This makes AI models developed using AIGrow more maintainable over time.                      |
-| Simplified logic                                  | By supporting idempotent operations, pattern matching, and recursive functions, AIGrow enables developers to work with |
-|                                                   | complex logic more efficiently and elegantly, reducing the potential for errors and making code more straightforward to |
-|                                                   | understand and update.                                                                                                  |
-| Strong typing and constraint handling             | AIGrow's strong typing system reduces the risk of type-related errors and unexpected type conversions. Additionally,  |
-|                                                   | its support for constraint declarations allows developers to enforce constraints more easily, ensuring that AI models   |
-|                                                   | adhere to predefined requirements.                                                                                      |
-| Lazy evaluation                                   | AIGrow's lazy evaluation feature allows for the deferral of computation until it is actually needed, potentially        |
-|                                                   | improving performance by optimizing resource usage.                                                                    |
-| Built-in optimization and concurrency support     | AIGrow comes with a standard optimization library and support for concurrent and parallel task execution, enabling     |
-|                                                   | efficient use of multi-core processors and simplifying the implementation of optimization algorithms.                  |
+| Language Feature                                  | Benefits                                                                                                            |
+|---------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| Enhanced readability and maintainability          | - Improved code organization<br>- Easier code understanding<br>- More maintainable AI models                          |
+| Simplified logic                                  | - Efficient handling of complex logic<br>- Reduced error potential<br>- More straightforward code updates             |
+| Strong typing and constraint handling             | - Reduced type-related errors<br>- Avoid unexpected type conversions<br>- Enforced constraints and requirements      |
+| Lazy evaluation                                   | - Optimized resource usage<br>- Improved performance through deferred computation                                     |
+| Built-in optimization and concurrency support     | - Efficient use of multi-core processors<br>- Simplified implementation of optimization algorithms                    |
 
 
 
@@ -80,7 +57,7 @@ it simplifies the process of building and maintaining AI models while reducing t
 
 
 
-## Example Code    
+### Example Code    
 
 ```
 // Importing necessary modules
@@ -132,6 +109,7 @@ accuracy: ds.calculate_accuracy(predictions, test_data.labels)
 print(f"Model accuracy: {accuracy * 100}%")
 ```
 
+
 ## Folder and files structure for Compiler:
 
 ```
@@ -177,32 +155,102 @@ print(f"Model accuracy: {accuracy * 100}%")
 | src/main.rs                        | Ties everything together, reads the AIGrow source code as input, and produces TensorFlow-compatible code as output.                                              |
 
 
-# AIGrow Language Specification
+## AIGrow Language Specification
 
 | Section | Description |
 | --- | --- |
-| Comments | Single-line and multi-line comments |
-| Data Types | int, float, bool, string, tuples, lists, maps, Option, Result |
-| Variables and Constants | Variable and constant declaration and assignment |
-| Operators | Arithmetic, comparison, logical, assignment, other |
-| Control Structures | if-else statement, while loop, for loop, match statement |
-| Functions | Function declaration, pure functions, async functions, function call |
-| Modules and Imports | Module declaration, importing modules |
-| Custom Data Types | Struct and enum declaration |
-| Concurrency | Parallelism support using threads |
-| Type System and Constraints | Type alias, type parameters, constraints |
-| Idempotent Operations | Marking a function as idempotent |
-| Nested Functions | Defining a nested function |
-| Recursion | Marking a function as recursive |
-| Lazy Evaluation | Defining a lazy expression and force evaluation |
-| Standard Library | Predefined functions for common tasks |
-| Iterators and Generators | Iterator trait and implementation, generator function |
-| Invariants | Defining an invariant |
-| Macros | Defining and using macros |
-| Attributes | Defining and using custom attributes |
-| Object-Oriented Programming (Optional) | Class declaration, inheritance, trait declaration and implementation |
+| [Comments](SPEC.md#comments) | Single-line and multi-line comments |
+| [Data Types](SPEC.md#data-types) | int, float, bool, string, tuples, lists, maps, Option, Result |
+| [Variables and Constants](SPEC.md#variables-and-constants) | Variable and constant declaration and assignment |
+| [Operators](SPEC.md#operators) | Arithmetic, comparison, logical, assignment, other |
+| [Control Structures](SPEC.md#control-structures) | if-else statement, while loop, for loop, match statement |
+| [Functions](SPEC.md#functions) | Function declaration, pure functions, async functions, function call |
+| [Modules and Imports](SPEC.md#modules-and-imports) | Module declaration, importing modules |
+| [Custom Data Types](SPEC.md#custom-data-types) | Struct and enum declaration |
+| [Concurrency](SPEC.md#concurrency) | Parallelism support using threads |
+| [Type System and Constraints](SPEC.md#type-system-and-constraints) | Type alias, type parameters, constraints |
+| [Idempotent Operations](SPEC.md#idempotent-operations) | Marking a function as idempotent |
+| [Nested Functions](SPEC.md#nested-functions) | Defining a nested function |
+| [Recursion](SPEC.md#recursion) | Marking a function as recursive |
+| [Lazy Evaluation](SPEC.md#lazy-evaluation) | Defining a lazy expression and force evaluation |
+| [Standard Library](SPEC.md#standard-library) | Predefined functions for common tasks |
+| [Iterators and Generators](SPEC.md#iterators-and-generators) | Iterator trait and implementation, generator function |
+| [Invariants](SPEC.md#invariants) | Defining an invariant |
+| [Macros](SPEC.md#macros) | Defining and using macros |
+| [Attributes](SPEC.md#attributes) | Defining and using custom attributes |
+| [Object-Oriented Programming (Optional)](SPEC.md#object-oriented-programming-optional) | Class declaration, inheritance, trait declaration and implementation |
 
+[Full Specification](SPEC.md)
 
+# Getting Started
+
+This section provides instructions on setting up your project locally.
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Install the AIGrow Compiler and Runtime. You can download it from the official website.
+- You will need a code editor or an Integrated Development Environment (IDE) with support for the AIGrow programming language.
+- Ensure you have a modern operating system with support for AIGrow (Windows, macOS, or Linux).
+
+## Installation
+
+1. Install the AIGrow Compiler and Runtime by following the instructions on the official website.
+2. Set up your code editor or IDE with the necessary AIGrow extensions or plugins.
+3. Clone the project repository or download the project files from the source.
+4. Open the project folder in your code editor or IDE.
+5. To build the project, open a terminal in the project directory and run the following command:
+```
+aigrow build
+```
+
+6. To run the project, execute the following command:
+```
+aigrow run
+```
+
+## Usage
+
+AIGrow can be used for a variety of tasks, such as data processing, web development, scientific computing, and more. In this section, we provide a few examples and resources to help you get started with AIGrow.
+
+### Example 1: Hello, World!
+
+Create a new file called `main.aig` and add the following code:
+
+```aigrow
+fn main() {
+ println!("Hello, World!");
+}
+```
+
+Build and run the program using the commands mentioned in the Installation section.
+### Example 2: Fibonacci Sequence
+
+Create a new file called `fibonacci.aig` and add the following code:
+
+```aigrow
+
+recursive fn fibonacci(n: int) -> int {
+    if n <= 1 {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+fn main() {
+    let n: int = 10;
+    println!("Fibonacci({}) = {}", n, fibonacci(n));
+}
+```
+Build and run the program as mentioned earlier.
+
+### Resources
+
+- AIGrow Official Documentation: Comprehensive documentation for the AIGrow programming language.
+- AIGrow Community Forum: A platform to ask questions, share projects, and collaborate with other AIGrow developers.
+- AIGrow Standard Library Reference: Detailed documentation on the standard library functions and modules.
+- AIGrow Tutorials and Examples: A collection of tutorials and examples to help you learn AIGrow and apply it to various projects.
 
 --- PLAN
 
